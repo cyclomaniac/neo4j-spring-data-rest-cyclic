@@ -1,0 +1,38 @@
+buildscript {
+	ext {
+		springBootVersion = '1.4.0.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
+
+jar {
+	baseName = 'neo4-repository-cyclic-problem'
+	version = '0.0.1-SNAPSHOT'
+}
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+	compile('org.springframework.boot:spring-boot-starter-data-neo4j')
+	compile('org.neo4j:neo4j-ogm-core')
+	compile('org.neo4j:neo4j-ogm-bolt-driver:2.0.4')
+	compile('org.neo4j:neo4j-ogm-embedded-driver:2.0.4')
+	compile('org.springframework.boot:spring-boot-starter-data-rest')
+	compile('org.springframework.boot:spring-boot-starter-hateoas')
+	compile('com.voodoodyne.jackson.jsog:jackson-jsog:1.1')
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+}
